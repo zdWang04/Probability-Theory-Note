@@ -1,6 +1,10 @@
 #import "@preview/theorion:0.6.0": *
 #import "../../utils/utils.typ": *
-/// Appendix
+
+#counter(heading).update(0)
+#set heading(numbering: appendix-heading-numbering("A"))
+#set-theorion-numbering("A.1")
+
 = 速查表
 
 == 定义
@@ -22,3 +26,5 @@
 == 性质
 
 #make_appendix_property
+
+#pagebreak()

@@ -8,19 +8,20 @@
 
 ```bash
 ./
-├── assets
-│   └── 瑞鹤图.png # 封面图片
-├── chapters
-│   ├── appendix # 附录文件夹
-│   │   └── appendixA.typ
-│   ├── chapter01.typ
-│   ├── chapter02.typ
-│   ├── chapter03.typ # 各个章节笔记
-│   └── ... # 正文内容
-├── main.pdf # 编译产生的 .pdf 文件
-├── main.typ # 主文件，所有章节文件会包含其中，并进行全局配置（如字体，数学公式排版等）
+├── assets # 封面图片
+│   └── 瑞鹤图.png
+├── contents
+│   ├── appendix # 附录
+│   │   ├── appendixA.typ # 定义/定理等速查表
+│   │   └── appendixB.typ # 符号表
+│   └── chapters # 正文
+│       ├── chapter01.typ
+│       ├── chapter02.typ
+│       └── chapter03.typ
+├── main.pdf
+├── main.typ # 主文件
 ├── README.md
-└── utils # 放置工具函数
+└── utils # 工具函数
     └── utils.typ
 ```
 

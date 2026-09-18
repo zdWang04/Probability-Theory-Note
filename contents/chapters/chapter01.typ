@@ -54,20 +54,43 @@
 #remark[
   对于集合$A$和集合$A_i, i in ZZ^+$，有以下记号
   + 如果$A_1 subset.eq A_2 subset.eq ... and union.big_(i in ZZ^+)A_i = A$则记作$A_i arrow.t A$
-  + 如果$A_1 supset.eq A_2 supset.eq ... and inter.big_(i in ZZ^+)A_i = A$则记作$A_i arrow.t A$
+  + 如果$A_1 supset.eq A_2 supset.eq ... and inter.big_(i in ZZ^+)A_i = A$则记作$A_i arrow.b A$
 ]
 
 #theorem[测度基本性质][
   令$mu$为可测空间$(Omega, cal(F))$上的一个测度
   + $A subset.eq B => mu(A) <= mu(B)$
   + $A subset.eq union.big_(m=1)^infinity A_m => mu(A) <= sum_(m=1)^infinity mu(A_m)$
-  + $A_i arrow.t A => mu(A_i) <= mu(A)$
+  + $A_i arrow.t A => mu(A_i) arrow.t mu(A)$
   + $A_i arrow.b A and mu(A_1) < +infinity => mu(A_i) arrow.b mu(A)$
 ]<the:basic-measure-property>
 
 #proof[证明 @the:basic-measure-property][
   + 由于$A subset.eq B$，那么$B = A union (B without A)$，易知$A inter (B without A) = emptyset$，所以有
     $ mu(B) = mu(A) + mu(B without A) >= mu(A) + 0 = mu(A) $
+
+  + 由(1)，就有$mu(A) <= mu(union.big_(m=1)^infinity A_m)$，定义命题$P(n)$为$mu(union.big_(m=1)^n A_m) <= sum_(m=1)^n mu(A_m)$，使用数学归纳法证明
+    - 当$n = 1$时，显然有$mu(A_1) = mu(A_1)$，$P(1)$成立
+    - 归纳性的假设$P(n)$成立，现在证明$n+1$的情况
+      $ mu(union.big_(m=1)^(n+1) A_m) = mu(union.big_(m=1)^n A_m union A_(n+1)) $
+      - 如果$A_(n+1) inter union.big_(m=1)^n A_m = emptyset$，就有$ mu(union.big_(m=1)^(n+1) A_m) = mu(union.big_(m=1)^n A_m) + mu(A_(n+1)) $代入归纳假设就有$ mu(union.big_(m=1)^(n+1) A_m) <= sum_(m=1)^n mu(A_m) + mu(A_(n+1)) =sum_(m=1)^(n+1) mu(A_m) $成立
+      - 如果$A_(n+1) inter union.big_(m=1)^n A_m != emptyset$，那么就有
+        $
+          & union.big_(m=1)^n A_m inter (A_(n+1) without union.big_(m=1)^n A_m) = emptyset \
+          & A_(n+1) without union.big_(m=1)^n A_m subset.eq A_(n+1) \
+          & union.big_(m=1)^(n+1) A_m = union.big_(m=1)^n A_m union (A_(n+1) without (union.big_(m=1)^n A_m ))
+        $
+        所以有
+        $ mu(union.big_(m=1)^(n+1) A_m) = mu(union.big_(m=1)^n A_m) + mu(A_(n+1) without (union.big_(m=1)^n A_m )) $代入归纳假设并再次利用(1)，就有
+        $
+          mu(union.big_(m=1)^(n+1) A_m) <= sum_(m=1)^n mu(A_m) + mu(A_(n+1)) = sum_(m=1)^(n+1) mu(A_m)
+        $
+    - 在每种情况下$P(n+1)$都成立，归纳结束
+      $
+        mu(A) <= mu(union.big_(m=1)^infinity A_m) <= sum_(m=1)^infinity mu(A_m)
+      $
+  +
+
 ]
 
 #pagebreak()
