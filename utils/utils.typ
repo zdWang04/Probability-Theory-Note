@@ -35,12 +35,13 @@
     .display(
       "[year]年[month]月[day]日",
     ),
+  cover_path: "../assets/瑞鹤图.png",
 ) = {
   page(
     background: box(
       width: 100%,
       height: 100%,
-      image("../assets/瑞鹤图.png", width: 100%, height: 100%, fit: "cover"),
+      image(cover_path, width: 100%, height: 100%, fit: "cover"),
     ),
   )[
 
